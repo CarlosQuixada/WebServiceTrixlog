@@ -17,6 +17,7 @@ public class RotaController {
 	@Autowired
 	private RotaService rotaService;
 	
+	@RequestMapping()
 	public ResponseEntity<List<Rota>> getRotas() {
 		List<Rota> rotas = rotaService.getAllRotas();
 		if (rotas.isEmpty()) {
