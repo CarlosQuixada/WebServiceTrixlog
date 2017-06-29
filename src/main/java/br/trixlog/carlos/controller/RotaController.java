@@ -21,6 +21,7 @@ public class RotaController {
 	@Autowired
 	private RotaService rotaService;
 	
+
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Rota>> getAllRotas() {
 		List<Rota> rotas = rotaService.getAllRotas();
