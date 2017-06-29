@@ -7,5 +7,5 @@ import br.trixlog.carlos.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
-	public Usuario findUsuarioByNome(String nome);
+	public Usuario findUsuarioByUser(String user);
 }
