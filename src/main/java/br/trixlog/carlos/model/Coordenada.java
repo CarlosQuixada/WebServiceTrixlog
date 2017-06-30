@@ -1,6 +1,6 @@
 package br.trixlog.carlos.model;
 
-public class Position {
+public class Coordenada {
 	private double lat;
 	private double lng;
 

@@ -2,7 +2,7 @@ package br.trixlog.carlos.model;
 
 public class Parada {
 	private String name;
-	private Position position;
+	private Coordenada position;
 
 	public String getName() {
 		return name;
@@ -12,11 +12,11 @@ public class Parada {
 		this.name = name;
 	}
 
-	public Position getPosition() {
+	public Coordenada getPosition() {
 		return position;
 	}
 
-	public void setPosition(Position position) {
+	public void setPosition(Coordenada position) {
 		this.position = position;
 	}
 
