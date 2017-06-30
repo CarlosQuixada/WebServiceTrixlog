@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.trixlog.carlos.model.Parada;
 import br.trixlog.carlos.model.Rota;
 import br.trixlog.carlos.repository.RotaRepository;
 
@@ -14,10 +13,6 @@ public class RotaService {
 	@Autowired
 	private RotaRepository rotaRepository;
 	
-	public void gerarRota(List<Parada> stops) {
-
-	}
-
 	public Rota cadastrarRota(Rota rota) {
 		return rotaRepository.save(rota);
 	}
@@ -27,6 +22,12 @@ public class RotaService {
 	}
 
 	public List<Rota> getAllRotas() {
-		return null;
+		return rotaRepository.findAll();
+	}
+	
+	public Rota gerarRota(Rota rota){
+		Util util = new Util();
+		Rota rotaGerada = util.gerarRota(rota);
+		return rotaRepository.save(rotaGerada);
 	}
 }
