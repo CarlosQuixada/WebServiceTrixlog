@@ -1,5 +1,6 @@
 package br.trixlog.carlos.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.trixlog.carlos.model.Empresa;
+import br.trixlog.carlos.model.ListaRota;
 import br.trixlog.carlos.model.Rota;
+import br.trixlog.carlos.service.EmpresaService;
 import br.trixlog.carlos.service.RotaService;
 
 @RestController
@@ -20,7 +24,8 @@ import br.trixlog.carlos.service.RotaService;
 public class RotaRestController {
 	@Autowired
 	private RotaService rotaService;
-	
+	@Autowired
+	private EmpresaService empresaService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Rota>> getAllRotas() {
@@ -30,6 +35,9 @@ public class RotaRestController {
 	@RequestMapping(value="/gerarRota")
 	public ResponseEntity<Rota> gerarRota(@RequestBody Rota rota){
 		Rota rotaGerada = rotaService.gerarRota(rota);
+		Empresa emp = empresaService.getEmpresa(rota.getName());
+		rotaGerada.setName(emp.getNome());
+		rotaService.cadastrarRota(rotaGerada);
 		return new ResponseEntity<Rota>(rotaGerada,HttpStatus.OK);
 	}
 
@@ -41,5 +49,14 @@ public class RotaRestController {
 		}
 
 		return new ResponseEntity<Rota>(rota, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/buscarRotasByEmpresa/{empresaId}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ListaRota> buscarRotaByEmpresa(@PathVariable("empresaId") String empresaId){
+		Empresa emp = empresaService.getEmpresa(empresaId);
+		List<Rota> rotas = rotaService.buscarRotaByEmpresa(emp.getNome());
+		ListaRota listaRota = new ListaRota();
+		listaRota.setRotas(rotas);
+		return new ResponseEntity<ListaRota>(listaRota, HttpStatus.OK);
 	}
 }

@@ -2,6 +2,7 @@ package br.trixlog.carlos.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +23,8 @@ public class Util {
 	public Rota gerarRota(Rota rota) {
 		rota.setPath(calculaPath(rota.getPath()));
 		rota.setStops(gerarParadas(rota.getPath()));
+		Date data = new Date(System.currentTimeMillis());
+		rota.setRouteDate(data);
 		return rota;
 	}
 

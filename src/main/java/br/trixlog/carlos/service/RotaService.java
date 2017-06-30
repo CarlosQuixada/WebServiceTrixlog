@@ -28,6 +28,10 @@ public class RotaService {
 	public Rota gerarRota(Rota rota){
 		Util util = new Util();
 		Rota rotaGerada = util.gerarRota(rota);
-		return rotaRepository.save(rotaGerada);
+		return rotaGerada;
+	}
+	
+	public List<Rota> buscarRotaByEmpresa(String name){
+		return rotaRepository.findRotaByName(name);
 	}
 }

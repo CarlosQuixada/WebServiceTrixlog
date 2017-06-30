@@ -41,7 +41,7 @@ public class UsuarioRestController {
 	}
 	@RequestMapping(value="/logar",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Usuario> logar(@RequestBody Usuario usuario){
-		Usuario user = usuarioService.getByUser(usuario.getUser());
+		Usuario user = usuarioService.getByLogin(usuario.getLogin());
 		if(user != null){
 			if(user.getSenha().equals(usuario.getSenha())){
 				return new ResponseEntity<Usuario>(user,HttpStatus.OK);
