@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.trixlog.carlos.model.Usuario;
-import br.trixlog.carlos.service.UsuarioService;
+import br.trixlog.carlos.service.UsuarioRestService;
 
 @RestController
 @RequestMapping("/api/trixlog/usuarios")
 public class UsuarioRestController {
 	
 	@Autowired
-	private UsuarioService usuarioService;
+	private UsuarioRestService usuarioService;
 	
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
