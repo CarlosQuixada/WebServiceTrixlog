@@ -1,6 +1,5 @@
 package br.trixlog.carlos.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.trixlog.carlos.model.Empresa;
 import br.trixlog.carlos.model.ListaRota;
 import br.trixlog.carlos.model.Rota;
-import br.trixlog.carlos.service.EmpresaService;
-import br.trixlog.carlos.service.RotaService;
+import br.trixlog.carlos.service.EmpresaRestService;
+import br.trixlog.carlos.service.RotaRestService;
 
 @RestController
 @RequestMapping("/api/trixlog/rotas")
 public class RotaRestController {
 	@Autowired
-	private RotaService rotaService;
+	private RotaRestService rotaService;
 	@Autowired
-	private EmpresaService empresaService;
+	private EmpresaRestService empresaService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Rota>> getAllRotas() {

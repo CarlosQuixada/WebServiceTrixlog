@@ -9,7 +9,7 @@ import br.trixlog.carlos.model.Rota;
 import br.trixlog.carlos.repository.RotaRepository;
 
 @Service
-public class RotaService {
+public class RotaRestService {
 	@Autowired
 	private RotaRepository rotaRepository;
 	

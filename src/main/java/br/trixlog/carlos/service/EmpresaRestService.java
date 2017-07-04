@@ -7,7 +7,7 @@ import br.trixlog.carlos.model.Empresa;
 import br.trixlog.carlos.repository.EmpresaRepository;
 
 @Service
-public class EmpresaService {
+public class EmpresaRestService {
 	@Autowired
 	private EmpresaRepository empresaRepository;
 	

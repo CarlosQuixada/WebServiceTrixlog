@@ -9,7 +9,7 @@ import br.trixlog.carlos.model.Usuario;
 import br.trixlog.carlos.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioRestService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
