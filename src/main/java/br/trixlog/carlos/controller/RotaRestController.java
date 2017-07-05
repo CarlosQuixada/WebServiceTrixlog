@@ -40,9 +40,9 @@ public class RotaRestController {
 		return new ResponseEntity<Rota>(rotaGerada,HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Rota> getRota(@PathVariable("id") String id) {
-		Rota rota = rotaService.getRota(id);
+	@RequestMapping(value = "/getRota/{rotaId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Rota> getRota(@PathVariable("rotaId") String rotaId) {
+		Rota rota = rotaService.getRota(rotaId);
 		if (rota == null) {
 			return new ResponseEntity<Rota>(HttpStatus.NOT_FOUND);
 		}
