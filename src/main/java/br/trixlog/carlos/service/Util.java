@@ -1,6 +1,8 @@
 package br.trixlog.carlos.service;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,7 @@ import com.google.maps.model.LatLng;
 import br.trixlog.carlos.model.Coordenada;
 import br.trixlog.carlos.model.Parada;
 import br.trixlog.carlos.model.Rota;
+import sun.misc.BASE64Encoder;
 
 @Service
 public class Util {
@@ -78,5 +81,17 @@ public class Util {
 		}
 
 		return stops;
+	}
+	
+	public String criptografar(String senha) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(senha.getBytes());
+			BASE64Encoder encoder = new BASE64Encoder();
+			return encoder.encode(md.digest());
+		} catch (NoSuchAlgorithmException ns) {
+			ns.printStackTrace();
+		}
+		return senha;
 	}
 }
